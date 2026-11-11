@@ -2,7 +2,7 @@
 
 - **Mã đề:** 01
 - **Họ tên:** Nguyễn Bảo Huy
-- **Lớp:** 
+- **Lớp:** CNTT1
 - **Link repository:** 
 - **Hệ điều hành (Windows/macOS):** Windows
 
@@ -15,6 +15,8 @@ ls -Force
 mkdir backup
 cp .\data\Ban_Ve_Thang_1.xlsx.xlsx .\backup
 rm *.tmp
+pwd
+cd 
 
 ```
 
@@ -70,14 +72,30 @@ Select-String "status=500" .\logs\visit > .\logs\loi_500.txt
 ### Lệnh chạy (Windows: nếu dùng Phụ lục 2 thì ghi cả 2 lệnh)
 
 ```shell
-# Ghi lệnh vào đây (xoá dòng này)
+@'
+>> # Script : tong_hop.ps1
+>> # Tac gia :  NGUYEN BAO HUY
+>> # Ngay tao : 11-11-2026
+>> Write-Host "Dang tao bao cao..."
+>> "=== BAO CAO SU CO WEBSITE ===" > logs/tong_hop.txt
+>> Get-Content logs/visit.log | Select-String "status=404" >> logs/tong_hop.txt
+>> Get-Content logs/visit.log | Select-String "status=500" | Measure-Object >> logs/tong_hop.txt
+>> Write-Host "Hoan Thanh!"
+>> '@ | Set-Content tong_hop.ps1
 
 ```
 
 ### Nội dung file logs/tong_hop.txt
 
 ```text
-(Dán nội dung file vào đây – xoá dòng này)
+# Script : tong_hop.ps1
+# Tac gia :  NGUYEN BAO HUY
+# Ngay tao : 11-11-2026
+Write-Host "Dang tao bao cao..."
+"=== BAO CAO SU CO WEBSITE ===" > logs/tong_hop.txt
+Get-Content logs/visit.log | Select-String "status=404" >> logs/tong_hop.txt
+Get-Content logs/visit.log | Select-String "status=500" | Measure-Object >> logs/tong_hop.txt
+Write-Host "Hoan Thanh!"
 
 ```
 
@@ -85,9 +103,9 @@ Select-String "status=500" .\logs\visit > .\logs\loi_500.txt
 
 > README.md, .gitignore và .env.example được chấm trực tiếp trên file ở gốc dự án. Đánh dấu `[x]` vào các mục đã làm để tự kiểm tra.
 
-- [ ] README.md: Heading 1, mô tả có **in đậm** và *in nghiêng*, bảng, code block, task list, blockquote
-- [ ] .gitignore có dòng `.env` (tên file đúng, không có đuôi .txt)
-- [ ] .env.example có đủ tên biến, giá trị để trống (tên file đúng, không có đuôi .txt)
+- [X] README.md: Heading 1, mô tả có **in đậm** và *in nghiêng*, bảng, code block, task list, blockquote
+- [X] .gitignore có dòng `.env` (tên file đúng, không có đuôi .txt)
+- [X] .env.example có đủ tên biến, giá trị để trống (tên file đúng, không có đuôi .txt)
 
 ## 4.6. Kiểm tra trang web bằng DevTools (F12) và báo cáo lỗi
 
@@ -95,22 +113,23 @@ Select-String "status=500" .\logs\visit > .\logs\loi_500.txt
 
 | STT | Tab DevTools phát hiện lỗi | Tên file hoặc thông báo lỗi | Cách khắc phục |
 | --- | --- | --- | --- |
-| 1 |  |  |  |
-| 2 |  |  |  |
+| 1 | Network | logo.png | đổi tên logo-aquazone thành tên logo.png |
+| 2 | Console | ERR_FILE_NOT_FOUND , Uncaught ReferenceError  | đổi tên file hình ảnh và đổi tên hienThiBangGia thành hienThiBangGiaVe    |
 
 > Ảnh chụp màn hình lưu trong thư mục `evidence/` (network.png, console.png).
 
 ### Báo cáo lỗi gửi trưởng nhóm
 
-- **Context:** 
-- **Expected:** 
-- **Actual:** 
-- **Log:** 
+- **Context:** đang chạy chương trình trên app.js 
+- **Expected:** chương trình đọc lỗi file hình ảnh và lỗi chính tả trong app.js   
+- **Actual:** đã kiểm tra sửa đổi tên file hình ảnh và ghi lại chính tả và thành công
+
+- **Log:** Uncaught ReferenceError: hienThiBangGia is not defined
 
 ### Câu tìm kiếm Google
 
 ```text
-(Ghi câu tìm kiếm vào đây – xoá dòng này)
+site:stackoverflow "Uncaught ReferenceError: is not defined"
 
 ```
 
